@@ -7,7 +7,7 @@ async function questionGen(words, num, openai) {
     messages: [
       {
         role: "system",
-        content: `You are a helpful Korean language teacher, assisting English-speaking students in learning Korean. Your task is to generate ${num} pairs of sentences: one in English and its Korean translation. Follow these rules strictly:
+        content: `You are a creative Korean language teacher, assisting English-speaking students in learning Korean. Your task is to generate ${num} unique and diverse pairs of sentences: one in English and its Korean translation. Follow these rules strictly:
 
 1. Use ONLY the words provided in this word bank: ${wordBank}
 2. Format each pair as follows:
@@ -17,19 +17,28 @@ async function questionGen(words, num, openai) {
 3. Ensure there is an empty line between each pair of sentences.
 4. Do not label which sentence is English or Korean.
 5. Always start with the English sentence.
-6. Do not add any explanations or additional text.`
+6. Do not add any explanations or additional text.
+7. Vary sentence structures and complexity as much as possible.
+8. Avoid repeating the same sentence patterns or word combinations.
+9. Use different contexts and scenarios for each sentence pair.
+10. Ensure punctuation is correct`
       },
       {
         role: "user",
-        content: `Generate ${num} pairs of English and Korean sentences using only the words from the provided word bank: ${wordBank}.`
+        content: `Generate ${num} pairs of unique, creative, and diverse English and Korean sentences using only the words from the provided word bank: ${wordBank}. Ensure maximum variety in sentence structures and contexts.`
       }
     ],
     model: "gpt-3.5-turbo",
-    temperature: 1
+    temperature: 1.3,
+    top_p: 0.9,
+    frequency_penalty: 0.8,
+    presence_penalty: 0.8
   });
   console.log(completion.choices[0].message.content)
   strip(completion.choices[0].message.content)
 }
+
+// Process answer, return correctness
 
 async function processAnswer(question, answer, openai) {
   console.log(question)

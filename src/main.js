@@ -1,5 +1,6 @@
 // TO ADD:
 // Change complexity of sentences
+// Select language
 
 import OpenAI from 'openai'
 import { questionGen, processAnswer } from './prompting.js'
@@ -39,7 +40,6 @@ fileSelector.addEventListener('change', (event) => {
       text = e.target.result
       //console.log(text) // log text
     }
-
     reader.onerror = (e) => {
       console.error('Error reading file', e)
     }
@@ -49,6 +49,7 @@ fileSelector.addEventListener('change', (event) => {
   }
 })
 
+// Button control
 document.getElementById('submit-button').addEventListener('click', () => handleSubmit(openai))
 document.getElementById('next').addEventListener('click', handleNext)
 

@@ -58,14 +58,12 @@ async function handleSubmit(openai) {
     alert('Please enter an answer before submitting.')
     return
   }
-
   try {
     await processAnswer(currentQuestion, answer, openai)
   } 
   catch (error) {
     console.error("Error processing answer:", error)
   }
-
   document.getElementById('submit-button').style.display = 'none'
   document.getElementById('next').style.display = 'inline'
 }
