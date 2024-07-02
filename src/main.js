@@ -2,16 +2,11 @@
 // Change complexity of sentences
 // Select language
 
-import OpenAI from 'openai'
 import { questionGen, processAnswer } from './prompting.js'
 import { strip, display, handleSubmit, handleNext } from './ui.js'
 
-const API_KEY = import.meta.env.VITE_API_KEY
 
-const openai = new OpenAI({ 
-  apiKey: API_KEY,
-  dangerouslyAllowBrowser: true 
-})
+
 
 let text
 
@@ -24,7 +19,7 @@ document.getElementById('myForm').addEventListener('submit', async (event) => {
     alert("The number of questions cannot exceed 30.");
     return;
   }
-  await questionGen(text, numSentence, openai); // send to gpt
+  await questionGen(text, numSentence); // send to gpt
 });
 
 const fileSelector = document.getElementById('file-selector')
@@ -50,7 +45,6 @@ fileSelector.addEventListener('change', (event) => {
 })
 
 // Button control
-document.getElementById('submit-button').addEventListener('click', () => handleSubmit(openai))
+// Button control
+document.getElementById('submit-button').addEventListener('click', handleSubmit)
 document.getElementById('next').addEventListener('click', handleNext)
-
-export { openai }
