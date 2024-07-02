@@ -1,0 +1,46 @@
+계절-season
+극장-theater
+꽃-flower
+나라-country
+내년-next year
+대학원-graduate school
+방학-school vacation
+악기-musical instrument
+액션 영화-action movie
+여름-summer
+봄-spring
+가을-autumn
+겨울-winter
+여행(하다)-travel
+영화-movie
+영화관-movie theater
+코미디-comedy
+피아노-piano
+받다-to receive
+축하하다-to congradulate
+아마-probably, perhaps
+정말-really
+무슨-what, what kind of
+어느-which
+~(으)ㄹ거예요-probability (future tense)
+지난/이번/다음-last/this/next (used to describe time)
+마트-supermarket
+설거지(하다)-dishwashing
+신문-newspaper
+심리학-psychology
+이야기(하다)-talk, chat (얘기)
+전공(하다)-major
+주-week
+준비(하다)-preparation
+청소(하다)-cleaning
+학기말-the end of the semester
+조용하다-to be quiet
+흐리다-to be cloudy
+만들다-to make
+보내다 (보내세요)-to spend time
+장(을)보다-to buy one's groceries
+가끔-sometimes, occasionally
+많이-much, many
+서로-each other
+특히-particularly
+~고-and (clausal connective)

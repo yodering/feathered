@@ -1,0 +1,225 @@
+hello-안녕하세요
+My name is _______.-제 이름은 ______ 입니다/이에요/예요.
+I am ______.-저는 ______ 입니다/이에요/예요.
+I, me (informal)-나
+I, me (formal)-저
+topic particle-은/는
+also, too-도
+to be-이다(이에요/예요)
+grade level (year in school)-학년
+student-학생
+college student-대학생
+USA-미국
+person, people-사람
+What is your name?-이름이 뭐예요?
+Nice to meet you-반갑습니다
+name-이름
+attached to a person's name for courtesy-씨
+English-영어
+Japan-일본
+China-중국
+UK-영국
+Korean Language-한국말
+yes, I see, okay-네
+no-아니요
+subject particle-이/가
+to be so-그렇다 (그래요)
+what-무엇, 뭐
+library-도서관
+course, class-수업
+homework-숙제
+restaurant, school cafeteria-식당
+morning, breakfast-아침
+noon, lunch-점심
+evening, dinner-저녁
+friend-친구
+school-학교
+to be spacious, wide-넓다
+to be narrow-좁다
+to be okay, to be all right-괜찮다 (괜찮아요)
+to be many, much-많다
+to be delicious, tasty-맛있다
+to taste bad-맛없다
+to be how-어떻다 (어때요)
+to be fun, interesting-재미있다 (재미있어요)
+to be boring, not interesting-재미없다 (재미없어요)
+to be good, nice-좋다 (좋아요)
+to be bad-싫다 (싫어요)
+to eat-먹다
+to sit-앉다
+to know-알다
+very, really (adj)-아주
+polite ending-~어요/아요
+plural particle-들
+study-공부(하다)
+man/male-남자
+female/woman-여자
+tomorrow-내일
+today-오늘
+exam/test-시험
+history-역사
+food-음식
+to meet-만나다
+to see, to look, to watch-보다 (봐요)
+to write-쓰다
+to get along-지내다 (지내요)
+to do-하다 (해요)
+to be cheap-싸다
+to be expensive-비싸다
+to be big-크다
+to be small-작다
+how-어떻게
+nowadays/these days-요즘
+well-잘
+now-지금
+object particle-을/를
+bag-가방
+dormitory-기숙사
+college, university-대학교
+back, behind-뒤
+the top side, above-위
+below, bottom-밑
+outside-밖
+inside-안
+front-앞
+side, next to, beside-옆
+building-빌딩
+bookstore-서점
+clock-시계
+what place, where (question word)-어디
+post office-우체국
+chair-의자
+desk-책상
+book-책
+campus-캠퍼스
+to be (existence)-있다 (있어요)
+to not exist-없다 (없어요)
+in, at, on (indicates a static location or time)-에
+floor, layer (counter)-층
+textbook-교과서
+classroom-교실
+class-반
+dictionary-사전
+time-시간
+umbrella-우산
+question-질문(하다)
+home, house-집
+computer-컴퓨터
+hall-홀
+who-누구 (누구 + 가 = 누가)
+to go-가다
+to come-오다
+to greet-인사하다
+to read-읽다
+every day-매일
+diligently-열심히
+so, therefore-그래서
+but, however-그런데
+honorific polite ending-~(으)세요
+dog-개
+high school student-고등학생
+grad student-대학원생
+younger sibling-동생
+younger brother-남동생
+younger sister-여동생
+Boston-보스턴
+parents-부모님
+father-아버지
+mother-어머니
+older brother (female)-오빠
+older brother (male)-형
+older sister (male)-누나
+older sister (female)-언니
+Hong Kong-홍콩
+one with counter (하나)-한
+two with counter (둘)-두
+three with counter (셋)-세
+four with counter (넷)-네
+item (counter)-개
+volume (counter)-권
+year (counter)-년
+(month) counter-달
+dollar-달러 (불)
+animal (counter)-마리
+person (counter)-명
+hour (duration)-시간
+won (Korean currency)-원
+month-월
+day-일
+how many, what (with a counter)-몇
+있다; to be, to stay (hon.)-계시다 (계세요)
+and (with nouns)-하고
+(someone's) thing-거 (=것)
+New York-뉴욕
+Los Angeles-로스엔젤레스
+roommate-룸메이트
+room-방
+relationship, 2) between-사이
+biology-생물학
+apartment-아파트
+Hawaii-하와이
+to be thankful-고맙다 (고마워요)
+to be bad-나쁘다
+to be expensive-비싸다
+to be pretty-예쁘다
+to drink-마시다
+to learn-배우다
+to sleep-자다
+to give-주다
+very, truly-참
+this (thing)-이거 (이것)
+we/us/our (우리)-저희 (humble)
+my (내)-제 (humble)
+only-만
+of-의
+park-공원
+next, following-다음
+lab-랩
+department store-백화점
+birthday-생일
+gift, present-선물(하다)
+shopping-쇼핑(하다)
+practice-연습(하다)
+after a long time; long time no see-오래간만 (오랜만)
+exercise-운동(하다)
+work-일(하다)
+phone call-전화(하다)
+coffee shop, cafe-커피숍
+tennis-테니스
+hamburger-햄버거
+to teach-가르치다
+to buy-사다
+to play (tennis)-치다
+again-또
+to (destination)-
+at, in, on (time)-에
+in, at (dynamic location)-
+from (location, time)-에서
+by the way-그런데
+(if so) then-그럼
+store-가게
+morning (AM)-오전
+afternoon (PM)-오후
+clothes-옷
+this (time)-이번
+political science-정치학
+semester, academic term-학기
+Monday-월요일
+Tuesday-화요일
+Wednesday-수요일
+Thursday-목요일
+Friday-금요일
+Saturday-토요일
+Sunday-일요일
+to walk-걷다
+to listen 2) to take (a course)-듣다
+pronounced (가치); together-같이
+when-언제
+course, subject-과목
+minute-분
+second-초
+hour, o'clock-시
+with-하고
+in order to-~(으)러
+major-전공
+family-가족
