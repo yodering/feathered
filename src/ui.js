@@ -50,7 +50,7 @@ function display(questions) {
   }
 }
 
-async function handleSubmit(openai) {
+async function handleSubmit() {
   const answerBox = document.getElementById('answer-box')
   const answer = answerBox.value
   
@@ -59,7 +59,7 @@ async function handleSubmit(openai) {
     return
   }
   try {
-    await processAnswer(currentQuestion, answer, openai)
+    await processAnswer(currentQuestion, answer)
   } 
   catch (error) {
     console.error("Error processing answer:", error)
