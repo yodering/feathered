@@ -29,7 +29,7 @@ exports.handler = async (event) => {
       messages: [
         {
           role: "user",
-          content: `Generate ${num} pairs of unique, creative, and diverse English and Korean sentences using only the words from the provided word bank: ${words}. Ensure maximum variety in sentence structures and contexts.`
+          content: `Generate ${num} pairs of unique, creative, and diverse English and Korean sentences using only the words from the provided word bank: ${words}. Ensure only the words in the word bank are used.`
         }
       ]
     });
