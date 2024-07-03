@@ -75,10 +75,16 @@ async function handleSubmit() {
 }
 
 function handleNext() {
+  const feedbackBox = document.getElementById('feedback-box');
+  if (feedbackBox) {
+    feedbackBox.innerHTML = '';
+  }
+  
   const answerBox = document.getElementById('answer-box')
   answerBox.value = ''
   currentIndex++
   display()
+
 }
 
 export { strip, display, handleSubmit, handleNext }
