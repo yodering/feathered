@@ -31,9 +31,31 @@ async function questionGen(words, num) {
 
 // Process answer, return correctness
 async function processAnswer(question, answer) {
-  console.log(question);
-  console.log(answer);
-  // Implement this function similarly to questionGen, creating a new Netlify function if needed
+  try {
+    console.log('Processing answer:', { question, answer });
+    const response = await fetch('/.netlify/functions/process-answer', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ question, answer })
+    });
+    console.log('Response status:', response.status);
+    const text = await response.text();
+    console.log('Response text:', text);
+    const data = JSON.parse(text);
+    console.log('Parsed data:', data);
+    if (data.error) {
+      throw new Error(data.error);
+    }
+    if (!data.result) {
+      throw new Error('No result in response');
+    }
+    return data.result;
+  } catch (error) {
+    console.error('Error processing answer:', error);
+    throw error;
+  }
 }
 
 export { questionGen, processAnswer }

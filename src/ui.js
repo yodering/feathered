@@ -59,10 +59,16 @@ async function handleSubmit() {
     return
   }
   try {
-    await processAnswer(currentQuestion, answer)
+    const feedback = await processAnswer(currentQuestion, answer)
+    // Display the feedback to the user
+    const feedbackBox = document.getElementById('feedback-box') || document.createElement('div')
+    feedbackBox.id = 'feedback-box'
+    feedbackBox.innerHTML = feedback.replace(/\n/g, '<br>')
+    document.body.appendChild(feedbackBox)
   } 
   catch (error) {
     console.error("Error processing answer:", error)
+    alert('Failed to process answer. Please try again.')
   }
   document.getElementById('submit-button').style.display = 'none'
   document.getElementById('next').style.display = 'inline'
