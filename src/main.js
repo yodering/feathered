@@ -4,8 +4,11 @@
 
 import { questionGen, processAnswer } from './prompting.js'
 import { strip, display, handleSubmit, handleNext } from './ui.js'
+import { init as initModel } from './model.js';
 
-
+document.addEventListener('DOMContentLoaded', (event) => {
+  initModel();
+});
 
 
 let text
@@ -51,3 +54,13 @@ fileSelector.addEventListener('change', (event) => {
 // Button control
 document.getElementById('submit-button').addEventListener('click', handleSubmit)
 document.getElementById('next').addEventListener('click', handleNext)
+
+window.addEventListener('resize', function() {
+  // Update 3D model (this function should be defined in model.js)
+  if (typeof updateModelSize === 'function') {
+      updateModelSize();
+  }
+
+  // Update main content layout if needed
+  // You can add any necessary layout adjustments here
+});

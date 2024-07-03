@@ -10,11 +10,11 @@ async function questionGen(words, num) {
       },
       body: JSON.stringify({ words, num })
     });
-    console.log('Response status:', response.status);
+    //console.log('Response status:', response.status);
     const text = await response.text();
-    console.log('Response text:', text);
+   // console.log('Response text:', text);
     const data = JSON.parse(text);
-    console.log('Parsed data:', data);
+   // console.log('Parsed data:', data);
     if (data.error) {
       throw new Error(data.error);
     }
