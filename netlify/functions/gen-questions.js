@@ -24,9 +24,8 @@ exports.handler = async (event) => {
 5. Always start with the English sentence.
 6. Do not add any explanations or additional text.
 7. Vary sentence structures and complexity as much as possible.
-8. Avoid repeating the same sentence patterns or word combinations.
-9. Use different contexts and scenarios for each sentence pair.
-10. Ensure punctuation is correct`,
+8. Use different contexts and scenarios for each sentence pair.
+9. Ensure punctuation is correct`,
       messages: [
         {
           role: "user",

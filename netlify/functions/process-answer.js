@@ -17,9 +17,9 @@ exports.handler = async (event) => {
 1. Correctness: [Correct/Partially Correct/Incorrect]
 2. Explanation: [Brief explanation of any errors or areas for improvement]
 3. Correct Translation: [The correct Korean translation]
-4. Tips: [A short tip to help the student remember this translation or a related grammar point]
+4. Tips: [A short tip to help the student remember this translation or a related grammar point, no more than one sentence]
 
-Keep your response concise and friendly, focusing on constructive feedback.`,
+Keep your response concise and friendly, focusing on constructive feedback. Ensure the feedback is in this order and formatting.`,
       messages: [
         {
           role: "user",
