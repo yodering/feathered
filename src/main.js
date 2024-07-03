@@ -10,7 +10,6 @@ import { strip, display, handleSubmit, handleNext } from './ui.js'
 
 let text
 
-// Listening to the form
 document.getElementById('myForm').addEventListener('submit', async (event) => {
   event.preventDefault();
   const numSentence = parseInt(document.getElementById('question-amount').value);
@@ -19,7 +18,11 @@ document.getElementById('myForm').addEventListener('submit', async (event) => {
     alert("The number of questions cannot exceed 30.");
     return;
   }
-  await questionGen(text, numSentence); // send to gpt
+  if (!text) {
+    alert("Please select a file with words first.");
+    return;
+  }
+  await questionGen(text, numSentence); // send to llm
 });
 
 const fileSelector = document.getElementById('file-selector')

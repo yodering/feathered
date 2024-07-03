@@ -5,6 +5,9 @@ async function questionGen(words, num) {
     console.log('Sending request with:', { words, num });
     const response = await fetch('/.netlify/functions/gen-questions', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({ words, num })
     });
     console.log('Response status:', response.status);
@@ -12,9 +15,17 @@ async function questionGen(words, num) {
     console.log('Response text:', text);
     const data = JSON.parse(text);
     console.log('Parsed data:', data);
+    if (data.error) {
+      throw new Error(data.error);
+    }
+    if (!data.result) {
+      throw new Error('No result in response');
+    }
     strip(data.result);
   } catch (error) {
     console.error('Error generating questions:', error);
+    // You might want to display this error to the user
+    alert('Failed to generate questions. Please try again.');
   }
 }
 
