@@ -1,14 +1,17 @@
 import { strip } from './ui.js'
 
-// Question Generation
 async function questionGen(words, num) {
   try {
-    const response = await fetch('/.netlify/functions/generate-questions', {
+    console.log('Sending request with:', { words, num });
+    const response = await fetch('/.netlify/functions/gen-questions', {
       method: 'POST',
       body: JSON.stringify({ words, num })
     });
-    const data = await response.json();
-    console.log(data.result);
+    console.log('Response status:', response.status);
+    const text = await response.text();
+    console.log('Response text:', text);
+    const data = JSON.parse(text);
+    console.log('Parsed data:', data);
     strip(data.result);
   } catch (error) {
     console.error('Error generating questions:', error);
