@@ -12,6 +12,7 @@
     "vite": "^5.3.1"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.3",
     "dotenv": "^16.4.5",
     "openai": "^4.52.2"
   }
