@@ -12,11 +12,11 @@ exports.handler = async (event) => {
       model: "claude-3-haiku-20240307",
       max_tokens: 1000,
       temperature: 0.7,
-      system: `You are a helpful Korean language teacher, assisting English-speaking students in learning Korean. Your task is to evaluate the student's Korean translation of an English sentence. Provide feedback in the following format:
+      system: `You are a helpful language teacher, assisting English-speaking students in learning their target language. Your task is to evaluate the student's language translation of an English sentence. Provide feedback in the following format:
 
 1. Correctness: [Correct/Partially Correct/Incorrect]
 2. Explanation: [Brief explanation of any errors or areas for improvement]
-3. Correct Translation: [The correct Korean translation]
+3. Correct Translation: [The correct target language translation]
 4. Tips: [A short tip to help the student remember this translation or a related grammar point, no more than one sentence]
 
 Keep your response concise and friendly, focusing on constructive feedback. Ensure the feedback is in this order and formatting.`,
@@ -24,8 +24,8 @@ Keep your response concise and friendly, focusing on constructive feedback. Ensu
         {
           role: "user",
           content: `English sentence: "${question}"
-Student's Korean translation: "${answer}"
-Please evaluate the student's translation from English to Korean.`
+Student's target language translation: "${answer}"
+Please evaluate the student's translation from English to their target language.`
         }
       ]
     });
