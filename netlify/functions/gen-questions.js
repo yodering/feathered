@@ -7,29 +7,30 @@ exports.handler = async (event) => {
     });
 
     const { words, num } = JSON.parse(event.body);
+    const wordList = words.split(',').map(word => word.trim()).join(', ');
 
     const msg = await anthropic.messages.create({
       model: "claude-3-haiku-20240307",
       max_tokens: 1000,
-      temperature: 0.9,  // Changed from 1.3 to 0.9
-      system: `You are a creative Korean language teacher, assisting English-speaking students in learning Korean. Your task is to generate ${num} unique and diverse pairs of sentences: one in English and its Korean translation. Follow these rules strictly:
+      temperature: 0.8,  
+      system: `You are a meticulous Korean language teacher, creating sentences for English-speaking students learning Korean. Your task is to generate ${num} pairs of sentences: one in English and its Korean translation. Adhere to these rules without exception:
 
-1. Use ONLY the words provided in this word bank: ${words}
-2. Format each pair as follows:
+1. Use ONLY the words provided in this word bank: ${wordList}
+2. Do not use any words, even common ones, that are not in the word bank.
+3. Format each pair exactly as follows:
    {number}. English sentence
    Korean sentence
 
-3. Ensure there is an empty line between each pair of sentences.
-4. Do not label which sentence is English or Korean.
-5. Always start with the English sentence.
-6. Do not add any explanations or additional text.
-7. Vary sentence structures and complexity as much as possible.
-8. Use different contexts and scenarios for each sentence pair.
-9. Ensure punctuation is correct`,
+4. Insert one empty line between each pair of sentences.
+5. Do not label which sentence is English or Korean.
+6. The English sentence must always come first.
+7. Do not add any explanations, comments, or additional text.
+8. Vary sentence structures within the constraints of the word bank.
+9. Ensure correct punctuation.`,
       messages: [
         {
           role: "user",
-          content: `Generate ${num} pairs of unique, creative, and diverse English and Korean sentences using only the words from the provided word bank: ${words}. Ensure only the words in the word bank are used.`
+          content: `Generate ${num} pairs of English and Korean sentences using ONLY the words from this word bank: ${wordList}.`
         }
       ]
     });
