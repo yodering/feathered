@@ -25,7 +25,7 @@ Keep your response concise and friendly, focusing on constructive feedback. Ensu
           role: "user",
           content: `English sentence: "${question}"
 Student's Korean translation: "${answer}"
-Please evaluate the student's translation from English to Korean.`
+Please evaluate the student's translation from English to Korean. Maintain they use only informal high endings and not formal high.`
         }
       ]
     });

@@ -61,7 +61,6 @@ async function handleSubmit() {
   }
   try {
     const feedback = await processAnswer(currentQuestion, answer, text)
-    console.log(currentQuestion, answer, text)
     // Display the feedback to the user
     const feedbackBox = document.getElementById('feedback-box') || document.createElement('div')
     feedbackBox.id = 'feedback-box'
