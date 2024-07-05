@@ -30,15 +30,14 @@ async function questionGen(words, num) {
 }
 
 // Process answer, return correctness
-async function processAnswer(question, answer) {
+async function processAnswer(question, answer, words) {
   try {
-    console.log('Processing answer:', { question, answer });
     const response = await fetch('/.netlify/functions/process-answer', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ question, answer })
+      body: JSON.stringify({ question, answer, words })
     });
     console.log('Response status:', response.status);
     const text = await response.text();

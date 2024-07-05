@@ -1,4 +1,5 @@
 import { processAnswer } from './prompting.js'
+import { text } from './main.js'
 
 let currentIndex = 0
 let currentQuestions = {} 
@@ -59,7 +60,7 @@ async function handleSubmit() {
     return
   }
   try {
-    const feedback = await processAnswer(currentQuestion, answer)
+    const feedback = await processAnswer(currentQuestion, answer, text)
     // Display the feedback to the user
     const feedbackBox = document.getElementById('feedback-box') || document.createElement('div')
     feedbackBox.id = 'feedback-box'

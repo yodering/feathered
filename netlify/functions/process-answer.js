@@ -6,13 +6,13 @@ exports.handler = async (event) => {
       apiKey: process.env.VITE_API_KEY,
     });
 
-    const { question, answer } = JSON.parse(event.body);
+    const { question, answer , words} = JSON.parse(event.body);
 
     const msg = await anthropic.messages.create({
       model: "claude-3-haiku-20240307",
       max_tokens: 1000,
       temperature: 0.7,
-      system: `You are a helpful Korean language teacher, assisting English-speaking students in learning Korean. Your task is to evaluate the student's Korean translation of an English sentence. Provide feedback in the following format:
+      system: `You are a helpful Korean language teacher, assisting English-speaking students in learning Korean. Your task is to evaluate the student's Korean translation of an English sentence. For context, these are the words they know: ${words}. Provide feedback in the following format:
 
 1. Correctness: [Correct/Partially Correct/Incorrect]
 2. Explanation: [Brief explanation of any errors or areas for improvement]

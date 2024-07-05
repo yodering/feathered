@@ -51,3 +51,6 @@ fileSelector.addEventListener('change', (event) => {
 // Button control
 document.getElementById('submit-button').addEventListener('click', handleSubmit)
 document.getElementById('next').addEventListener('click', handleNext)
+
+
+export { text }
