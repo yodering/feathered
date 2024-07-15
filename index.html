@@ -1,25 +1,42 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?">
-    <link href="/src/styles.css" rel="stylesheet">
-    <title>feathered</title>
-  </head>
-  <body>
-    <input type="file" id="file-selector" accept=".txt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Learning App</title>
+    <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+  <div id="landing-page">
+    <div class="grid-background"></div>
+    <div class="content">
+        <div class="model-container">
+            <!-- Three.js model will be inserted here -->
+        </div>
+        <div class="text-and-button">
+            <div class="main-text" id="changing-text"></div>
+            <div class="button-container">
+                <button id="get-started-button" class="get-started-button">
+                    get started
+                    <span class="arrow-icon">→</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <form id="myForm">
-      <input type="text" id="question-amount" name="fname" placeholder="Enter question amount">
-      <input type="submit" value="Submit">
-    </form>
-    <div id="question-box"></div>
-    <input type="text" id="answer-box" placeholder="Your answer here..">
-    <button id="submit-button">Submit</button>
-    <button id="next">Next</button>
-    <div id="feedback-box"></div>
+    <div id="main-content" style="display: none;">
+        <form id="myForm">
+            <input type="file" id="file-selector" accept=".txt">
+            <input type="number" id="question-amount" placeholder="Number of questions">
+            <input type="submit" value="Generate Questions">
+        </form>
+        <div id="question-box"></div>
+        <input type="text" id="answer-box" style="display: none;">
+        <button id="submit-button" style="display: none;">Submit</button>
+        <button id="next" style="display: none;">Next</button>
+    </div>
 
     <script type="module" src="/src/main.js"></script>
-  </body>
+</body>
 </html>

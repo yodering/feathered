@@ -1,18 +1,121 @@
+@font-face {
+    font-family: 'Merriweather';
+    src: url('merriweather.ttf') format('woff2'),
+         url('merriweather.ttf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-    background-color: #0f0f0f;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: 'Merriweather', Arial, sans-serif;
+    background-color: #E0E0E0;
+    color: #010307;
+}
+
+/* Landing page styles */
+#landing-page {
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.grid-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(to right, #676767 1px, transparent 1px),
+        linear-gradient(to bottom, #676767 1px, transparent 1px);
+    background-size: 21px 21px;
+    opacity: 0.1;
+}
+
+.content {
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 40px 0;
+    box-sizing: border-box;
+}
+
+.model-container {
+    flex-grow: 0.7;
+    display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    margin: 0;
+}
+
+.text-and-button {
+    flex-grow: 0.3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-text {
+    font-size: 2rem;
+    margin-bottom: 24px;
+    height: 3em; /* Adjust as needed to prevent layout shifts */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: pre-wrap;
+}
+
+.main-text::after {
+    content: '|';
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.highlight {
+    color: #1D83EF; /* Your highlight color */
+}
+
+.get-started-button {
+    background-color: #1D83EF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    max-width: 200px; /* Adjust this value to control the button's width */
+    width: auto;
+}
+
+.arrow-icon {
+    margin-left: 8px;
+}
+
+/* Existing app styles */
+#main-content {
     padding: 20px;
     box-sizing: border-box;
 }
 
-input[type="file"], input[type="text"], input[type="submit"], button {
+input[type="file"], input[type="text"], input[type="number"], input[type="submit"], button {
     background-color: #1a1a1a;
     color: #ffffff;
     border: 1px solid #333;
@@ -51,21 +154,7 @@ input[type="submit"]:hover, button:hover {
     max-width: 300px;
 }
 
-#file-selector {
-    margin-bottom: 20px;
-}
-
-/* Add some subtle grid lines to the background */
-body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 20px 20px;
-    z-index: -1;
+/* Transition styles */
+#landing-page, #main-content {
+    transition: opacity 0.5s ease-in-out;
 }
