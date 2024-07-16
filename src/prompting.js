@@ -39,6 +39,7 @@ async function processAnswer(question, answer, words, language) {
     console.log('Response text:', text);
     const data = JSON.parse(text);
     console.log('Parsed data:', data);
+    console.log(language)
     if (data.error) {
       throw new Error(data.error);
     }
