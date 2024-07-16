@@ -12,7 +12,7 @@ async function questionGen(words, num, language) {
     });
     const text = await response.text();
     const data = JSON.parse(text);
-    console.log(langauge)
+    console.log('Received language:', language); // Corrected log
     if (data.error) {
       throw new Error(data.error);
     }
@@ -28,7 +28,7 @@ async function questionGen(words, num, language) {
 
 async function processAnswer(question, answer, words, language) {
   try {
-    console.log('Processing answer with language:', language); // Debug log
+    console.log('Processing answer with language:', language);
     const response = await fetch('/.netlify/functions/process-answer', {
       method: 'POST',
       headers: {
@@ -41,7 +41,7 @@ async function processAnswer(question, answer, words, language) {
     console.log('Response text:', text);
     const data = JSON.parse(text);
     console.log('Parsed data:', data);
-    console.log(langauge)
+    console.log('Language used:', language); // Corrected log
     if (data.error) {
       throw new Error(data.error);
     }
