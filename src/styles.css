@@ -12,6 +12,26 @@ body {
     font-family: 'Merriweather', Arial, sans-serif;
     background-color: #E0E0E0;
     color: #010307;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.grid-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(to right, #676767 1px, transparent 1px),
+        linear-gradient(to bottom, #676767 1px, transparent 1px);
+    background-size: 21px 21px;
+    opacity: 0.05;
+    z-index: -1;
 }
 
 /* Landing page styles */
@@ -23,19 +43,7 @@ body {
     align-items: center;
     position: relative;
     overflow: hidden;
-}
-
-.grid-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        linear-gradient(to right, #676767 1px, transparent 1px),
-        linear-gradient(to bottom, #676767 1px, transparent 1px);
-    background-size: 21px 21px;
-    opacity: 0.1;
+    width: 100%;
 }
 
 .content {
@@ -66,7 +74,7 @@ body {
 .main-text {
     font-size: 2rem;
     margin-bottom: 24px;
-    height: 3em; /* Adjust as needed to prevent layout shifts */
+    height: 3em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,7 +93,7 @@ body {
 }
 
 .highlight {
-    color: #1D83EF; /* Your highlight color */
+    color: #1D83EF;
 }
 
 .get-started-button {
@@ -101,57 +109,67 @@ body {
     align-items: center;
     justify-content: center;
     white-space: nowrap;
-    max-width: 200px; /* Adjust this value to control the button's width */
+    max-width: 200px;
     width: auto;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.get-started-button:hover {
+    background-color: #1666C0;
+    transform: scale(1.05);
 }
 
 .arrow-icon {
     margin-left: 8px;
 }
 
-/* Existing app styles */
+/* Existing app styles - updated */
 #main-content {
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-input[type="file"], input[type="text"], input[type="number"], input[type="submit"], button {
-    background-color: #1a1a1a;
-    color: #ffffff;
-    border: 1px solid #333;
-    padding: 10px 15px;
-    margin: 10px 0;
-    border-radius: 5px;
-    font-size: 16px;
-    width: 100%;
-    max-width: 300px;
-}
-
-input[type="submit"], button {
-    background-color: #2a2a2a;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-input[type="submit"]:hover, button:hover {
-    background-color: #3a3a3a;
-}
-
-#question-box, #feedback-box {
-    background-color: #1a1a1a;
-    padding: 20px;
+    background-color: white;
+    padding: 2rem;
     border-radius: 10px;
-    margin: 20px 0;
-    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%;
     max-width: 500px;
+    z-index: 1;
+    font-family: 'Merriweather', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #myForm {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 1rem;
     width: 100%;
-    max-width: 300px;
+}
+
+select, textarea, input[type="number"], input[type="submit"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Merriweather', Arial, sans-serif;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="submit"] {
+    background-color: #1D83EF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+
+input[type="submit"]:hover {
+    background-color: #1666C0;
+    transform: scale(1.05);
 }
 
 /* Transition styles */
