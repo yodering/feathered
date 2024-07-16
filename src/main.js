@@ -69,9 +69,9 @@ function loadQuestionsPage() {
                 <div id="question-box"></div>
                 <input type="text" id="answer-box">
                 <div class="button-container">
-                    <button id="submit-button">Submit</button>
-                    <button id="next" style="display: none;">Next</button>
-                    <button id="start-over" style="display: none;">Start Over</button>
+                    <button id="submit-button">submit</button>
+                    <button id="next" style="display: none;">next</button>
+                    <button id="start-over" style="display: none;">start over</button>
                 </div>
                 <div id="feedback-box"></div>
             </div>
