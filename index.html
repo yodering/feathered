@@ -2,30 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>feathered</title>
+    <title>Language Learning App</title>
     <link rel="stylesheet" href="/src/styles.css">
 </head>
 <body>
-  <div id="landing-page">
     <div class="grid-background"></div>
-    <div class="content">
-        <div class="model-container">
-            <!-- Three.js model will be inserted here -->
-        </div>
-        <div class="text-and-button">
-            <div class="main-text" id="changing-text"></div>
-            <div class="button-container">
-                <button id="get-started-button" class="get-started-button">
-                    get started
-                    <span class="arrow-icon">→</span>
-                </button>
+    <div id="landing-page">
+        <div class="content">
+            <div class="model-container"></div>
+            <div class="text-and-button">
+                <div id="changing-text" class="main-text"></div>
+                <div class="button-container">
+                    <button id="get-started-button" class="get-started-button">
+                        get started <span class="arrow-icon">→</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-    <div class="grid-background"></div>
     <div id="main-content" style="display: none;">
         <form id="myForm">
             <select id="language-select">
@@ -38,12 +33,11 @@
                 <option value="Japanese">Japanese</option>
                 <option value="Portuguese">Portuguese</option>
             </select>
-            <textarea id="word-input" rows="4" cols="50" placeholder="enter word bank here"></textarea>
-            <input type="number" id="question-amount" placeholder="number of questions here">
-            <input type="submit" value="generate questions">
+            <textarea id="word-input" rows="4" cols="50" placeholder="Paste vocab here..."></textarea>
+            <input type="number" id="question-amount" placeholder="Number of questions here">
+            <input type="submit" value="Generate Questions">
         </form>
     </div>
-
     <script type="module" src="/src/main.js"></script>
 </body>
 </html>

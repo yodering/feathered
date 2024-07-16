@@ -1,12 +1,13 @@
-import { questionGen } from './prompting.js'
+import { questionGen } from './prompting.js';
 import { initTypewriterEffect } from './typewriterEffect.js';
 
 let words = '';
 let selectedLanguage = 'Korean'; // Default language
 
 window.addEventListener('DOMContentLoaded', (event) => {
-  initTypewriterEffect();
-  initializeApp();
+    initTypewriterEffect();
+    initializeApp();
+    handleRouting();
 });
 
 function initializeApp() {
@@ -32,23 +33,67 @@ function initializeApp() {
             localStorage.setItem('words', words);
             localStorage.setItem('selectedLanguage', selectedLanguage);
             
-            // Redirect to questions.html
-            window.location.href = '/questions.html';
+            // Use History API to change the URL
+            history.pushState(null, '', '/questions');
+            handleRouting();
         }
     });
 }
 
-// Handle transition from landing page to main app
 document.getElementById('get-started-button').addEventListener('click', () => {
     const landingPage = document.getElementById('landing-page');
     const mainContent = document.getElementById('main-content');
 
-    landingPage.style.opacity = 0;
-    setTimeout(() => {
-        landingPage.style.display = 'none';
-        mainContent.style.display = 'block';
-        setTimeout(() => {
-            mainContent.style.opacity = 1;
-        }, 50);
-    }, 500);
+    landingPage.style.display = 'none';
+    mainContent.style.display = 'block';
 });
+
+function handleRouting() {
+    const path = window.location.pathname;
+    if (path === '/questions') {
+        loadQuestionsPage();
+    } else {
+        loadMainPage();
+    }
+}
+
+function loadQuestionsPage() {
+    document.getElementById('landing-page').style.display = 'none';
+    document.getElementById('main-content').style.display = 'none';
+    let questionsContent = document.getElementById('questions-content');
+    if (!questionsContent) {
+        questionsContent = document.createElement('div');
+        questionsContent.id = 'questions-content';
+        questionsContent.innerHTML = `
+            <div class="question-answer-container">
+                <div id="question-box"></div>
+                <input type="text" id="answer-box">
+                <div class="button-container">
+                    <button id="submit-button">Submit</button>
+                    <button id="next" style="display: none;">Next</button>
+                    <button id="start-over" style="display: none;">Start Over</button>
+                </div>
+                <div id="feedback-box"></div>
+            </div>
+        `;
+        document.body.appendChild(questionsContent);
+        import('./questions.js').then(module => {
+            module.initializeQuestionsPage();
+        });
+    } else {
+        questionsContent.style.display = 'block';
+    }
+}
+
+function loadMainPage() {
+    document.getElementById('landing-page').style.display = 'block';
+    document.getElementById('main-content').style.display = 'none';
+    const questionsContent = document.getElementById('questions-content');
+    if (questionsContent) {
+        questionsContent.style.display = 'none';
+    }
+}
+
+window.addEventListener('popstate', handleRouting);
+
+export { words, selectedLanguage };
