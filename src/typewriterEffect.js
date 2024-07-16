@@ -6,7 +6,7 @@ const phrases = [
     { text: "La fluidité, une ", highlight: "plume", suffix: " à la fois", lang: "French" },
     { text: "Fluidità, una ", highlight: "piuma", suffix: " alla volta", lang: "Italian" },
     { text: "流暢さ、一つの", highlight: "羽", suffix: "ずつ", lang: "Japanese" },
-    { text: "Flüssigkeit, eine ", highlight: "Feder", suffix: " nach der anderen", lang: "German" },
+    { text: "Flüssigkeit, eine ", highlight: "feder", suffix: " nach der anderen", lang: "German" },
     { text: "Fluência, uma ", highlight: "pena", suffix: " de cada vez", lang: "Portuguese" }
 ];
 

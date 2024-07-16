@@ -34,7 +34,6 @@ body {
     z-index: -1;
 }
 
-/* Landing page styles */
 #landing-page {
     height: 100vh;
     display: flex;
@@ -129,13 +128,14 @@ body {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 500px;
+    width: 90%;
+    max-width: 500px; /* Reduced max-width to make it narrower */
     z-index: 1;
     font-family: 'Merriweather', Arial, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: auto; /* Center the container */
 }
 
 #myForm {
@@ -143,10 +143,20 @@ body {
     flex-direction: column;
     gap: 1rem;
     width: 100%;
+    align-items: center;
 }
 
-select, textarea, input[type="number"], input[type="submit"] {
+textarea, input[type="number"] {
     width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Merriweather', Arial, sans-serif;
+}
+
+select {
+    width: 40%;
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -163,18 +173,31 @@ input[type="submit"] {
     color: white;
     border: none;
     cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-family: inherit;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    max-width: 200px;
+    width: auto;
     transition: background-color 0.3s, transform 0.3s;
 }
-
 
 input[type="submit"]:hover {
     background-color: #1666C0;
     transform: scale(1.05);
 }
 
-/* Transition styles */
 #landing-page, #main-content {
+    opacity: 0;
     transition: opacity 0.5s ease-in-out;
+}
+
+#landing-page.active, #main-content.active {
+    opacity: 1;
 }
 
 body {
@@ -188,20 +211,23 @@ body {
 }
 
 .outer-container {
-    width: 90%;
-    max-width: 800px;
+    width: 100%;
+    max-width: 800px; /* Reduced max-width */
     background-color: white;
     border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     padding: 30px;
+    margin: auto;
 }
 
 .question-answer-container {
     background-color: #f9f9f9;
     border-radius: 15px;
-    padding: 25px;
+    padding: 20px;
     margin: 20px auto;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    max-width: 800px;
+    width: 100%;
 }
 
 #question-box {
@@ -235,6 +261,15 @@ body {
     gap: 15px;
 }
 
+button {
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #1666C0;
+    transform: scale(1.05);
+}
+
 #submit-button, #next {
     flex: 0 0 auto;
     padding: 12px 40px;
@@ -243,31 +278,31 @@ body {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
     font-family: 'Merriweather', Arial, sans-serif;
 }
 
 #submit-button {
     background-color: #1D83EF;
     color: white;
+    border-radius: 15px;
 }
 
 #submit-button:hover {
+    transform: scale(1.05);
     background-color: #1666C0;
 }
 
 #next {
     background-color: #28a745;
     color: white;
+    border-radius: 15px;
 }
 
 #next:hover {
     background-color: #218838;
+    transform: scale(1.05);
 }
 
-#submit-button:active, #next:active {
-    transform: translateY(2px);
-}
 
 #feedback-box {
     margin-top: 20px;
@@ -275,7 +310,7 @@ body {
     background-color: #f0f0f0;
     border-radius: 8px;
     border-left: 5px solid #1D83EF;
-    display: none; /* Initially hidden */
+    display: none; 
 }
 
 #feedback-box:not(:empty) {
@@ -283,23 +318,21 @@ body {
 }
 
 #start-over {
-    background-color: #f0ad4e; /* A distinct color, you can change this */
+    background-color: #f0ad4e; 
     color: white;
     border: none;
+    border-radius: 15px;
     padding: 12px 24px;
     font-size: 16px;
     font-weight: bold;
-    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s, transform 0.3s;
     font-family: 'Merriweather', Arial, sans-serif;
 }
 
 #start-over:hover {
     background-color: #ec971f;
-    transform: translateY(-2px);
+    transform: scale(1.05);
 }
 
-#start-over:active {
-    transform: translateY(0);
-}
+
