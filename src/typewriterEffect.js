@@ -4,7 +4,10 @@ const phrases = [
     { text: "유창함, 하나의 ", highlight: "깃털", suffix: " 씩", lang: "Korean" },
     { text: "Fluidez, una ", highlight: "pluma", suffix: " a la vez", lang: "Spanish" },
     { text: "La fluidité, une ", highlight: "plume", suffix: " à la fois", lang: "French" },
-    { text: "Fluidità, una ", highlight: "piuma", suffix: " alla volta", lang: "Italian" }
+    { text: "Fluidità, una ", highlight: "piuma", suffix: " alla volta", lang: "Italian" },
+    { text: "流暢さ、一つの", highlight: "羽", suffix: "ずつ", lang: "Japanese" },
+    { text: "Flüssigkeit, eine ", highlight: "Feder", suffix: " nach der anderen", lang: "German" },
+    { text: "Fluência, uma ", highlight: "pena", suffix: " de cada vez", lang: "Portuguese" }
 ];
 
 let phraseIndex = 0;
