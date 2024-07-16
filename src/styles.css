@@ -175,14 +175,16 @@ input[type="submit"]:hover {
 /* Transition styles */
 #landing-page, #main-content {
     transition: opacity 0.5s ease-in-out;
-}body {
+}
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+    font-family: 'Merriweather', Arial, sans-serif;
 }
 
 .outer-container {
@@ -219,6 +221,7 @@ input[type="submit"]:hover {
     border-radius: 10px;
     margin-bottom: 20px;
     box-sizing: border-box;
+    font-family: 'Merriweather', Arial, sans-serif;
 }
 
 #answer-box:focus {
@@ -241,6 +244,7 @@ input[type="submit"]:hover {
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Merriweather', Arial, sans-serif;
 }
 
 #submit-button {
@@ -288,6 +292,7 @@ input[type="submit"]:hover {
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Merriweather', Arial, sans-serif;
 }
 
 #start-over:hover {
