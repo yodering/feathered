@@ -51,4 +51,8 @@ document.getElementById('get-started-button').addEventListener('click', () => {
     initializeApp();
 });
 
-export { words, selectedLanguage }
+function getSelectedLanguage() {
+    return selectedLanguage;
+}
+
+export { words, getSelectedLanguage }
