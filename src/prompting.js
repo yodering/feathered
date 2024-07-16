@@ -1,20 +1,17 @@
 import { strip } from './ui.js'
 
-async function questionGen(words, num) {
+async function questionGen(words, num, language) {
   try {
-    console.log('Sending request with:', { words, num });
+    console.log('Sending request with:', { words, num, language });
     const response = await fetch('/.netlify/functions/gen-questions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ words, num })
+      body: JSON.stringify({ words, num, language })
     });
-    //console.log('Response status:', response.status);
     const text = await response.text();
-    //console.log('Response text:', text);
     const data = JSON.parse(text);
-    //console.log('Parsed data:', data);
     if (data.error) {
       throw new Error(data.error);
     }
@@ -28,15 +25,14 @@ async function questionGen(words, num) {
   }
 }
 
-// Process answer, return correctness
-async function processAnswer(question, answer, words) {
+async function processAnswer(question, answer, words, language) {
   try {
     const response = await fetch('/.netlify/functions/process-answer', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ question, answer, words })
+      body: JSON.stringify({ question, answer, words, language })
     });
     console.log('Response status:', response.status);
     const text = await response.text();

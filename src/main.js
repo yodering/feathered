@@ -3,6 +3,7 @@ import { strip, display, handleSubmit, handleNext } from './ui.js'
 import { initTypewriterEffect } from './typewriterEffect.js';
 
 let words = '';
+let selectedLanguage = '';
 
 window.addEventListener('DOMContentLoaded', (event) => {
   initTypewriterEffect();
@@ -18,11 +19,12 @@ function initializeApp() {
             return;
         }
         words = document.getElementById('word-input').value.trim();
+        selectedLanguage = document.getElementById('language-select').value;
         if (!words) {
             alert("Please enter words separated by commas.");
             return;
         }
-        await questionGen(words, numSentence); // send to llm
+        await questionGen(words, numSentence, selectedLanguage); // send to llm
     });
 
     // Button control
@@ -48,4 +50,4 @@ document.getElementById('get-started-button').addEventListener('click', () => {
     initializeApp();
 });
 
-export { words }
+export { words, selectedLanguage }
