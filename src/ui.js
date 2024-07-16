@@ -1,5 +1,5 @@
 import { processAnswer } from './prompting.js'
-import { words } from './main.js'
+import { words, getSelectedLanguage } from './main.js'
 
 let currentIndex = 0
 let currentQuestions = {} 
@@ -76,8 +76,6 @@ async function handleSubmit() {
   document.getElementById('submit-button').style.display = 'none'
   document.getElementById('next').style.display = 'inline'
 }
-
-
 
 function handleNext() {
   const feedbackBox = document.getElementById('feedback-box');
