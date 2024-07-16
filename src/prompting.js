@@ -12,6 +12,7 @@ async function questionGen(words, num, language) {
     });
     const text = await response.text();
     const data = JSON.parse(text);
+    console.log(langauge)
     if (data.error) {
       throw new Error(data.error);
     }
@@ -40,6 +41,7 @@ async function processAnswer(question, answer, words, language) {
     console.log('Response text:', text);
     const data = JSON.parse(text);
     console.log('Parsed data:', data);
+    console.log(langauge)
     if (data.error) {
       throw new Error(data.error);
     }
