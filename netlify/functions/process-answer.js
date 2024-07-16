@@ -7,6 +7,7 @@ exports.handler = async (event) => {
     });
 
     const { question, answer, words, language } = JSON.parse(event.body);
+    console.log('Received language:', language); // Debug log
 
     const msg = await anthropic.messages.create({
       model: "claude-3-haiku-20240307",

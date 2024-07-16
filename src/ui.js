@@ -60,7 +60,8 @@ async function handleSubmit() {
     return
   }
   try {
-    const feedback = await processAnswer(currentQuestion, answer, words)
+    console.log("Selected language in handleSubmit:", selectedLanguage); // Debug log
+    const feedback = await processAnswer(currentQuestion, answer, words, selectedLanguage)
     // Display the feedback to the user
     const feedbackBox = document.getElementById('feedback-box') || document.createElement('div')
     feedbackBox.id = 'feedback-box'
@@ -74,6 +75,7 @@ async function handleSubmit() {
   document.getElementById('submit-button').style.display = 'none'
   document.getElementById('next').style.display = 'inline'
 }
+
 
 function handleNext() {
   const feedbackBox = document.getElementById('feedback-box');

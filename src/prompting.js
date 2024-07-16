@@ -27,6 +27,7 @@ async function questionGen(words, num, language) {
 
 async function processAnswer(question, answer, words, language) {
   try {
+    console.log('Processing answer with language:', language); // Debug log
     const response = await fetch('/.netlify/functions/process-answer', {
       method: 'POST',
       headers: {
@@ -39,7 +40,6 @@ async function processAnswer(question, answer, words, language) {
     console.log('Response text:', text);
     const data = JSON.parse(text);
     console.log('Parsed data:', data);
-    console.log(language)
     if (data.error) {
       throw new Error(data.error);
     }
