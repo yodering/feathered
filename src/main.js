@@ -3,7 +3,7 @@ import { strip, display, handleSubmit, handleNext } from './ui.js'
 import { initTypewriterEffect } from './typewriterEffect.js';
 
 let words = '';
-let selectedLanguage = '';
+let selectedLanguage = 'Korean'; // Default language
 
 window.addEventListener('DOMContentLoaded', (event) => {
   initTypewriterEffect();
@@ -20,6 +20,7 @@ function initializeApp() {
         }
         words = document.getElementById('word-input').value.trim();
         selectedLanguage = document.getElementById('language-select').value;
+        console.log("Selected language:", selectedLanguage); // Debug log
         if (!words) {
             alert("Please enter words separated by commas.");
             return;
