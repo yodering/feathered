@@ -1,5 +1,4 @@
-import { questionGen, processAnswer } from './prompting.js'
-import { strip, display, handleSubmit, handleNext } from './ui.js'
+import { questionGen } from './prompting.js'
 import { initTypewriterEffect } from './typewriterEffect.js';
 
 let words = '';
@@ -7,6 +6,7 @@ let selectedLanguage = 'Korean'; // Default language
 
 window.addEventListener('DOMContentLoaded', (event) => {
   initTypewriterEffect();
+  initializeApp();
 });
 
 function initializeApp() {
@@ -25,12 +25,17 @@ function initializeApp() {
             alert("Please enter words separated by commas.");
             return;
         }
-        await questionGen(words, numSentence, selectedLanguage); // send to llm
+        const questions = await questionGen(words, numSentence, selectedLanguage);
+        if (questions) {
+            // Store questions and other necessary data in localStorage
+            localStorage.setItem('questions', JSON.stringify(questions));
+            localStorage.setItem('words', words);
+            localStorage.setItem('selectedLanguage', selectedLanguage);
+            
+            // Redirect to questions.html
+            window.location.href = '/questions.html';
+        }
     });
-
-    // Button control
-    document.getElementById('submit-button').addEventListener('click', handleSubmit);
-    document.getElementById('next').addEventListener('click', handleNext);
 }
 
 // Handle transition from landing page to main app
@@ -46,13 +51,4 @@ document.getElementById('get-started-button').addEventListener('click', () => {
             mainContent.style.opacity = 1;
         }, 50);
     }, 500);
-
-    // Initialize the main app
-    initializeApp();
 });
-
-function getSelectedLanguage() {
-    return selectedLanguage;
-}
-
-export { words, getSelectedLanguage }

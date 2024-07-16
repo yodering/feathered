@@ -1,6 +1,3 @@
-import { processAnswer } from './prompting.js'
-import { words, getSelectedLanguage } from './main.js'
-
 let currentIndex = 0
 let currentQuestions = {} 
 let currentQuestion = '' // to store the current question
@@ -20,7 +17,7 @@ function strip(message) {
     }
   }
   console.log(dictionary)
-  display(dictionary)
+  return dictionary;
 }
 
 // Display question
@@ -34,6 +31,7 @@ function display(questions) {
   const answerBox = document.getElementById('answer-box')
   const submitButton = document.getElementById('submit-button')
   const nextButton = document.getElementById('next')
+  const startOverButton = document.getElementById('start-over')
 
   if (currentIndex < keys.length) {
     const key = keys[currentIndex]
@@ -42,16 +40,28 @@ function display(questions) {
     answerBox.style.display = 'inline'
     submitButton.style.display = 'inline'
     nextButton.style.display = 'none'
+    startOverButton.style.display = 'none'
   } 
   else {
     questionBox.textContent = "All questions answered!"
     answerBox.style.display = 'none'
     submitButton.style.display = 'none'
     nextButton.style.display = 'none'
+    startOverButton.style.display = 'inline'
   }
 }
 
-async function handleSubmit() {
+function handleStartOver() {
+  // Clear localStorage
+  localStorage.removeItem('questions');
+  localStorage.removeItem('words');
+  localStorage.removeItem('selectedLanguage');
+  
+  // Redirect to the main page
+  window.location.href = '/';
+}
+
+async function handleSubmit(processAnswerFunc) {
   const answerBox = document.getElementById('answer-box')
   const answer = answerBox.value
   
@@ -60,14 +70,14 @@ async function handleSubmit() {
     return
   }
   try {
-    const currentLanguage = getSelectedLanguage();
+    const currentLanguage = localStorage.getItem('selectedLanguage');
+    const words = localStorage.getItem('words');
     console.log("Selected language in handleSubmit:", currentLanguage);
-    const feedback = await processAnswer(currentQuestion, answer, words, currentLanguage)
+    const feedback = await processAnswerFunc(currentQuestion, answer, words, currentLanguage)
     // Display the feedback to the user
-    const feedbackBox = document.getElementById('feedback-box') || document.createElement('div')
-    feedbackBox.id = 'feedback-box'
+    const feedbackBox = document.getElementById('feedback-box')
     feedbackBox.innerHTML = feedback.replace(/\n/g, '<br>')
-    document.body.appendChild(feedbackBox)
+    feedbackBox.style.display = 'block' // Make sure it's visible
   } 
   catch (error) {
     console.error("Error processing answer:", error)
@@ -81,6 +91,7 @@ function handleNext() {
   const feedbackBox = document.getElementById('feedback-box');
   if (feedbackBox) {
     feedbackBox.innerHTML = '';
+    feedbackBox.style.display = 'none'; // Hide the feedback box
   }
   
   const answerBox = document.getElementById('answer-box')
@@ -89,4 +100,4 @@ function handleNext() {
   display()
 }
 
-export { strip, display, handleSubmit, handleNext }
+export { strip, display, handleSubmit, handleNext, handleStartOver}

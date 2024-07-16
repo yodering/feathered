@@ -12,17 +12,19 @@ async function questionGen(words, num, language) {
     });
     const text = await response.text();
     const data = JSON.parse(text);
-    console.log('Received language:', language); // Corrected log
+    console.log('Received language:', language);
     if (data.error) {
       throw new Error(data.error);
     }
     if (!data.result) {
       throw new Error('No result in response');
     }
-    strip(data.result);
+    const questions = strip(data.result);
+    return questions; // Return the processed questions
   } catch (error) {
     console.error('Error generating questions:', error);
     alert('Failed to generate questions. Please try again.');
+    return null;
   }
 }
 
@@ -41,7 +43,7 @@ async function processAnswer(question, answer, words, language) {
     console.log('Response text:', text);
     const data = JSON.parse(text);
     console.log('Parsed data:', data);
-    console.log('Language used:', language); // Corrected log
+    console.log('Language used:', language);
     if (data.error) {
       throw new Error(data.error);
     }
