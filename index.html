@@ -9,6 +9,7 @@
 </head>
 <body>
     <div class="grid-background"></div>
+    
     <div id="landing-page" class="active">
         <div class="content">
             <div class="model-container">
@@ -24,7 +25,70 @@
             </div>
         </div>
     </div>
+    
     <div id="main-content" style="display: none;">
+        <div class="slideshow-button-container">
+            <button id="openSlideshow" class="slideshow-button slideshow-button-outline">open tutorial</button>
+        </div>
+        <div id="popover" class="popover">
+            <div class="popover-content">
+                <div id="carousel" class="carousel">
+                    <div class="carousel-content">
+                        <div class="carousel-item">
+                            <div class="slideshow-grid">
+                                <div class="slideshow-space-y-2">
+                                    <h3 class="slideshow-text-xl">welcome to feathered!</h3>
+                                    <p class="slideshow-text-muted">this tutorial will guide you through using our vocabulary learning tool.</p>
+                                </div>
+                                <img src="/logo.png" width="300" height="300" alt="Welcome" class="slideshow-rounded-md">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="slideshow-grid">
+                                <div class="slideshow-space-y-2">
+                                    <h3 class="slideshow-text-xl">choose your language</h3>
+                                    <p class="slideshow-text-muted">select the language you want to practice from the dropdown menu.</p>
+                                </div>
+                                <img src="/language-select.png" width="200" height="200" alt="Choose Language" class="slideshow-rounded-md">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="slideshow-grid">
+                                <div class="slideshow-space-y-2">
+                                    <h3 class="slideshow-text-xl">enter your vocabulary</h3>
+                                    <p class="slideshow-text-muted">paste your vocabulary words into the text area, formatting doesn't matter!</p>
+                                </div>
+                                <img src="/words.png" width="250" height="200" alt="Enter Vocabulary" class="slideshow-rounded-md">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="slideshow-grid">
+                                <div class="slideshow-space-y-2">
+                                    <h3 class="slideshow-text-xl">importing from quizlet</h3>
+                                    <p class="slideshow-text-muted">importing sets from quizlet is possible</p>
+                                </div>
+                                <img src="/quizlet.png" alt="Generate Questions" class="slideshow-rounded-md slideshow-image">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="slideshow-grid">
+                                <div class="slideshow-space-y-2">
+                                    <h3 class="slideshow-text-xl">generate questions</h3>
+                                    <p class="slideshow-text-muted">choose the number of questions and click 'generate questions' to start learning!</p>
+                                </div>
+                                <img src="/gen-questions.png" width="250" height="200" alt="Generate Questions" class="slideshow-rounded-md">
+                            </div>
+                        </div>
+                    </div>
+                    <button id="prevSlide" class="carousel-control prev">&lt;</button>
+                    <button id="nextSlide" class="carousel-control next">&gt;</button>
+                </div>
+                <div class="slideshow-button-group">
+                    <button id="skipButton" class="slideshow-button slideshow-button-ghost">Skip</button>
+                    <button id="closeButton" class="slideshow-button slideshow-button-outline">Close</button>
+                </div>
+            </div>
+        </div>
         <form id="myForm">
             <select id="language-select">
                 <option value="Korean">Korean</option>
@@ -42,6 +106,7 @@
             <input type="submit" value="generate questions">
         </form>
     </div>
+    
     <script type="module" src="/src/main.js"></script>
 </body>
 </html>
