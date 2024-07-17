@@ -182,7 +182,6 @@ function initializeSlideshow() {
     const carouselContent = carousel.querySelector('.carousel-content');
     const prevButton = document.getElementById('prevSlide');
     const nextButton = document.getElementById('nextSlide');
-    const skipButton = document.getElementById('skipButton');
     const closeButton = document.getElementById('closeButton');
 
     let currentSlide = 0;
@@ -215,7 +214,6 @@ function initializeSlideshow() {
     openButton.addEventListener('click', openPopover);
     prevButton.addEventListener('click', prevSlide);
     nextButton.addEventListener('click', nextSlide);
-    skipButton.addEventListener('click', closePopover);
     closeButton.addEventListener('click', closePopover);
 }
 
