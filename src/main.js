@@ -8,6 +8,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     initTypewriterEffect();
     initializeApp();
     handleInitialRouting();
+    initializeSlideshow();
 });
 
 function initializeApp() {
@@ -28,12 +29,13 @@ function initializeApp() {
 
     if (questionAmount) {
         questionAmount.max = 10; // Set maximum number of questions
+        questionAmount.min = 1;  // Set minimum number of questions
     }
 
     if (form) {
         form.addEventListener('submit', async (event) => {
             event.preventDefault();
-            const numSentence = parseInt(questionAmount.value);
+            const numSentence = parseInt(questionAmount.value) || 1; // Default to 1 if empty or invalid
             console.log(numSentence); // log count
             if (numSentence > 10) { // cap of 10
                 alert("The number of questions cannot exceed 10.");
@@ -171,6 +173,50 @@ function loadMainPage() {
             }, 10);
         }, 500);
     }
+}
+
+function initializeSlideshow() {
+    const openButton = document.getElementById('openSlideshow');
+    const popover = document.getElementById('popover');
+    const carousel = document.getElementById('carousel');
+    const carouselContent = carousel.querySelector('.carousel-content');
+    const prevButton = document.getElementById('prevSlide');
+    const nextButton = document.getElementById('nextSlide');
+    const skipButton = document.getElementById('skipButton');
+    const closeButton = document.getElementById('closeButton');
+
+    let currentSlide = 0;
+    const totalSlides = carouselContent.children.length;
+
+    function showSlide(index) {
+        carouselContent.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    function openPopover() {
+        popover.style.display = 'block';
+    }
+
+    function closePopover() {
+        popover.style.display = 'none';
+        currentSlide = 0;
+        showSlide(currentSlide);
+    }
+
+    openButton.addEventListener('click', openPopover);
+    prevButton.addEventListener('click', prevSlide);
+    nextButton.addEventListener('click', nextSlide);
+    skipButton.addEventListener('click', closePopover);
+    closeButton.addEventListener('click', closePopover);
 }
 
 window.addEventListener('popstate', handleRouting);
