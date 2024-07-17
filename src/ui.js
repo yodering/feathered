@@ -40,7 +40,7 @@ export function display(questions) {
         nextButton.style.display = 'none';
         startOverButton.style.display = 'none';
     } else {
-        questionBox.textContent = "All questions answered!";
+        questionBox.textContent = "all questions answered!";
         answerBox.style.display = 'none';
         submitButton.style.display = 'none';
         nextButton.style.display = 'none';
