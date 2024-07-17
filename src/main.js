@@ -7,52 +7,103 @@ let selectedLanguage = 'Korean'; // Default language
 window.addEventListener('DOMContentLoaded', (event) => {
     initTypewriterEffect();
     initializeApp();
-    handleRouting();
+    handleInitialRouting();
 });
 
 function initializeApp() {
-    document.getElementById('myForm').addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const numSentence = parseInt(document.getElementById('question-amount').value);
-        console.log(numSentence); // log count
-        if (numSentence > 30) { // cap of 30
-            alert("The number of questions cannot exceed 30.");
-            return;
-        }
-        words = document.getElementById('word-input').value.trim();
-        selectedLanguage = document.getElementById('language-select').value;
-        console.log("Selected language:", selectedLanguage); // Debug log
-        if (!words) {
-            alert("Please enter words separated by commas.");
-            return;
-        }
-        const questions = await questionGen(words, numSentence, selectedLanguage);
-        if (questions) {
-            // Store questions and other necessary data in localStorage
-            localStorage.setItem('questions', JSON.stringify(questions));
-            localStorage.setItem('words', words);
-            localStorage.setItem('selectedLanguage', selectedLanguage);
-            
-            // Use History API to change the URL
-            history.pushState(null, '', '/questions');
-            handleRouting();
-        }
-    });
+    const form = document.getElementById('myForm');
+    const wordInput = document.getElementById('word-input');
+    const questionAmount = document.getElementById('question-amount');
+
+    if (wordInput) {
+        wordInput.maxLength = 10000; // Set maximum character limit
+        wordInput.addEventListener('input', function() {
+            const remainingChars = 10000 - this.value.length;
+            const feedbackElement = document.getElementById('char-count-feedback');
+            if (feedbackElement) {
+                feedbackElement.textContent = `${remainingChars} characters remaining`;
+            }
+        });
+    }
+
+    if (questionAmount) {
+        questionAmount.max = 10; // Set maximum number of questions
+    }
+
+    if (form) {
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const numSentence = parseInt(questionAmount.value);
+            console.log(numSentence); // log count
+            if (numSentence > 10) { // cap of 10
+                alert("The number of questions cannot exceed 10.");
+                return;
+            }
+            words = wordInput.value.trim();
+            selectedLanguage = document.getElementById('language-select').value;
+            console.log("Selected language:", selectedLanguage); // Debug log
+            if (!words) {
+                alert("Please enter words separated by commas.");
+                return;
+            }
+            if (words.length > 10000) {
+                alert("The word bank cannot exceed 10,000 characters.");
+                return;
+            }
+            const questions = await questionGen(words, numSentence, selectedLanguage);
+            if (questions) {
+                // Store questions and other necessary data in localStorage
+                localStorage.setItem('questions', JSON.stringify(questions));
+                localStorage.setItem('words', words);
+                localStorage.setItem('selectedLanguage', selectedLanguage);
+                
+                // Use History API to change the URL
+                history.pushState(null, '', '/questions');
+                handleRouting();
+            }
+        });
+    }
+
+    const getStartedButton = document.getElementById('get-started-button');
+    if (getStartedButton) {
+        getStartedButton.addEventListener('click', () => {
+            const landingPage = document.getElementById('landing-page');
+            const mainContent = document.getElementById('main-content');
+
+            if (landingPage && mainContent) {
+                landingPage.classList.remove('active');
+                setTimeout(() => {
+                    landingPage.style.display = 'none';
+                    mainContent.style.display = 'block';
+                    setTimeout(() => {
+                        mainContent.classList.add('active');
+                    }, 10);
+                }, 500); // Match this with the transition duration in CSS
+            }
+        });
+    }
 }
 
-document.getElementById('get-started-button').addEventListener('click', () => {
-    const landingPage = document.getElementById('landing-page');
-    const mainContent = document.getElementById('main-content');
+function handleInitialRouting() {
+    const path = window.location.pathname;
+    if (path === '/questions') {
+        // Check if we have the necessary data in localStorage
+        const questions = localStorage.getItem('questions');
+        const words = localStorage.getItem('words');
+        const selectedLanguage = localStorage.getItem('selectedLanguage');
 
-    landingPage.classList.remove('active');
-    setTimeout(() => {
-        landingPage.style.display = 'none';
-        mainContent.style.display = 'block';
-        setTimeout(() => {
-            mainContent.classList.add('active');
-        }, 10);
-    }, 500); // Match this with the transition duration in CSS
-});
+        if (questions && words && selectedLanguage) {
+            // We have the necessary data, so we can load the questions page
+            loadQuestionsPage();
+        } else {
+            // We don't have the necessary data, so redirect to the main page
+            history.replaceState(null, '', '/');
+            loadMainPage();
+        }
+    } else {
+        loadMainPage();
+    }
+}
 
 function handleRouting() {
     const path = window.location.pathname;
@@ -67,56 +118,59 @@ function loadQuestionsPage() {
     const landingPage = document.getElementById('landing-page');
     const mainContent = document.getElementById('main-content');
 
-    landingPage.classList.remove('active');
-    setTimeout(() => {
-        landingPage.style.display = 'none';
-        mainContent.style.display = 'none';
-
-        let questionsContent = document.getElementById('questions-content');
-        if (!questionsContent) {
-            questionsContent = document.createElement('div');
-            questionsContent.id = 'questions-content';
-            questionsContent.innerHTML = `
-                <div class="question-answer-container">
-                    <div id="question-box"></div>
-                    <input type="text" id="answer-box">
-                    <div class="button-container">
-                        <button id="submit-button">submit</button>
-                        <button id="next" style="display: none;">next</button>
-                        <button id="start-over" style="display: none;">start over</button>
-                    </div>
-                    <div id="feedback-box"></div>
-                </div>
-            `;
-            document.body.appendChild(questionsContent);
-            import('./questions.js').then(module => {
-                module.initializeQuestionsPage();
-            });
-        } else {
-            questionsContent.style.display = 'block';
-        }
+    if (landingPage && mainContent) {
+        landingPage.classList.remove('active');
         setTimeout(() => {
-            questionsContent.classList.add('active');
-        }, 10);
-    }, 500);
-}
+            landingPage.style.display = 'none';
+            mainContent.style.display = 'none';
 
+            let questionsContent = document.getElementById('questions-content');
+            if (!questionsContent) {
+                questionsContent = document.createElement('div');
+                questionsContent.id = 'questions-content';
+                questionsContent.innerHTML = `
+                    <div class="question-answer-container">
+                        <div id="question-box"></div>
+                        <input type="text" id="answer-box">
+                        <div class="button-container">
+                            <button id="submit-button">submit</button>
+                            <button id="next" style="display: none;">next</button>
+                            <button id="start-over" style="display: none;">start over</button>
+                        </div>
+                        <div id="feedback-box"></div>
+                    </div>
+                `;
+                document.body.appendChild(questionsContent);
+                import('./questions.js').then(module => {
+                    module.initializeQuestionsPage();
+                });
+            } else {
+                questionsContent.style.display = 'block';
+            }
+            setTimeout(() => {
+                questionsContent.classList.add('active');
+            }, 10);
+        }, 500);
+    }
+}
 
 function loadMainPage() {
     const landingPage = document.getElementById('landing-page');
     const mainContent = document.getElementById('main-content');
     const questionsContent = document.getElementById('questions-content');
 
-    mainContent.classList.remove('active');
-    questionsContent.classList.remove('active');
-    setTimeout(() => {
-        mainContent.style.display = 'none';
-        questionsContent.style.display = 'none';
-        landingPage.style.display = 'block';
+    if (landingPage && mainContent && questionsContent) {
+        mainContent.classList.remove('active');
+        questionsContent.classList.remove('active');
         setTimeout(() => {
-            landingPage.classList.add('active');
-        }, 10);
-    }, 500);
+            mainContent.style.display = 'none';
+            questionsContent.style.display = 'none';
+            landingPage.style.display = 'block';
+            setTimeout(() => {
+                landingPage.classList.add('active');
+            }, 10);
+        }, 500);
+    }
 }
 
 window.addEventListener('popstate', handleRouting);
