@@ -8,59 +8,59 @@ const phrases = [
     { text: "流暢さ、一つの", highlight: "羽", suffix: "ずつ", lang: "Japanese" },
     { text: "Flüssigkeit, eine ", highlight: "feder", suffix: " nach der anderen", lang: "German" },
     { text: "Fluência, uma ", highlight: "pena", suffix: " de cada vez", lang: "Portuguese" }
-];
+] 
 
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let isPaused = false;
+let phraseIndex = 0 
+let charIndex = 0 
+let isDeleting = false 
+let isPaused = false 
 
 function typeWriter() {
-    const currentPhrase = phrases[phraseIndex];
-    const fullText = `${currentPhrase.text}${currentPhrase.highlight}${currentPhrase.suffix}`;
-    const changingTextElement = document.getElementById('changing-text');
+    const currentPhrase = phrases[phraseIndex] 
+    const fullText = `${currentPhrase.text}${currentPhrase.highlight}${currentPhrase.suffix}` 
+    const changingTextElement = document.getElementById('changing-text') 
 
     if (!isDeleting && charIndex <= fullText.length) {
         if (charIndex <= currentPhrase.text.length) {
-            changingTextElement.textContent = fullText.substring(0, charIndex);
+            changingTextElement.textContent = fullText.substring(0, charIndex) 
         } else if (charIndex <= currentPhrase.text.length + currentPhrase.highlight.length) {
             changingTextElement.innerHTML = 
-                `${currentPhrase.text}<span class="highlight">${currentPhrase.highlight.substring(0, charIndex - currentPhrase.text.length)}</span>`;
+                `${currentPhrase.text}<span class="highlight">${currentPhrase.highlight.substring(0, charIndex - currentPhrase.text.length)}</span>` 
         } else {
             changingTextElement.innerHTML = 
-                `${currentPhrase.text}<span class="highlight">${currentPhrase.highlight}</span>${fullText.substring(currentPhrase.text.length + currentPhrase.highlight.length, charIndex)}`;
+                `${currentPhrase.text}<span class="highlight">${currentPhrase.highlight}</span>${fullText.substring(currentPhrase.text.length + currentPhrase.highlight.length, charIndex)}` 
         }
-        charIndex++;
+        charIndex++ 
         if (charIndex <= fullText.length) {
-            setTimeout(typeWriter, 50); // Typing speed
+            setTimeout(typeWriter, 50)  // Typing speed
         } else {
             setTimeout(() => {
-                isDeleting = true;
-                typeWriter();
-            }, 2000); // Pause before starting to delete
+                isDeleting = true 
+                typeWriter() 
+            }, 2000)  // Pause before starting to delete
         }
     } else if (isDeleting && charIndex >= 0) {
         if (charIndex > currentPhrase.text.length + currentPhrase.highlight.length) {
             changingTextElement.innerHTML = 
-                `${currentPhrase.text}<span class="highlight">${currentPhrase.highlight}</span>${fullText.substring(currentPhrase.text.length + currentPhrase.highlight.length, charIndex)}`;
+                `${currentPhrase.text}<span class="highlight">${currentPhrase.highlight}</span>${fullText.substring(currentPhrase.text.length + currentPhrase.highlight.length, charIndex)}` 
         } else if (charIndex > currentPhrase.text.length) {
             changingTextElement.innerHTML = 
-                `${currentPhrase.text}<span class="highlight">${currentPhrase.highlight.substring(0, charIndex - currentPhrase.text.length)}</span>`;
+                `${currentPhrase.text}<span class="highlight">${currentPhrase.highlight.substring(0, charIndex - currentPhrase.text.length)}</span>` 
         } else {
-            changingTextElement.textContent = fullText.substring(0, charIndex);
+            changingTextElement.textContent = fullText.substring(0, charIndex) 
         }
-        charIndex--;
+        charIndex-- 
         if (charIndex >= 0) {
-            setTimeout(typeWriter, 25); // Faster backspace speed
+            setTimeout(typeWriter, 25)  // Faster backspace speed
         } else {
-            isDeleting = false;
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            charIndex = 0;
-            setTimeout(typeWriter, 1000); // Pause before typing next phrase
+            isDeleting = false 
+            phraseIndex = (phraseIndex + 1) % phrases.length 
+            charIndex = 0 
+            setTimeout(typeWriter, 1000)  // Pause before typing next phrase
         }
     }
 }
 
 export function initTypewriterEffect() {
-    typeWriter();
+    typeWriter() 
 }
