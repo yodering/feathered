@@ -33,7 +33,7 @@ export function strip(message) {
         }
     }
 
-    // Handle the last pair if exists
+
     if (currentKey && englishText && lines[lines.length - 1] !== englishText) {
         dictionary[currentKey] = {
             english: englishText,

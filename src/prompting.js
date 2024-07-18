@@ -24,7 +24,7 @@ export async function questionGen(words, num, language) {
             throw new Error('Invalid JSON in response')
         }
 
-        console.log('Parsed data:', data)
+        //console.log('Parsed data:', data)
         console.log('Received language:', language)
         
         if (data.error) {
