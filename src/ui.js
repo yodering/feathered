@@ -15,7 +15,8 @@ export function strip(message) {
             other: otherText
         };
     }
-    console.log(dictionary);
+
+    //console.log('Processed dictionary:', dictionary);
     return dictionary;
 }
 
